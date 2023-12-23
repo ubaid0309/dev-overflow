@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Theme from "./Theme";
+import MobileNav from "./MobileNav";
+import GlobalSearch from "../Search/GlobalSearch";
 
 const Navbar = () => {
   return (
@@ -12,15 +14,16 @@ const Navbar = () => {
           src="/assets/images/site-logo.svg"
           width={23}
           height={23}
-          alt="DevFlow"
+          alt="DevOverFlow"
         />
         <p className="font-spaceGrotesk h2-bold text-dark-100 dark:text-light-900 max-sm:hidden">
           Dev <span className="text-primary-500">Overlow</span>
         </p>
       </Link>
-      Global Search
+      <GlobalSearch />
       <div className="flex-between gap-6">
         <Theme />
+
         <SignedIn>
           <UserButton
             afterSignOutUrl="/"
@@ -35,6 +38,8 @@ const Navbar = () => {
             }}
           />
         </SignedIn>
+
+        <MobileNav />
       </div>
     </nav>
   );
