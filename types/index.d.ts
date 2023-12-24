@@ -4,6 +4,17 @@ export interface SidebarLink {
   route: string;
   label: string;
 }
+
+export interface QuestionsLink {
+  title: string;
+  id: number;
+}
+
+export interface TagsLink {
+  title: string;
+  id: number;
+  tagCount: number;
+}
 export interface Job {
   id?: string;
   employer_name?: string;

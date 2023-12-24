@@ -50,7 +50,7 @@ const LeftSideBar = () => {
 
       <SignedOut>
         <Link href="/sign-in">
-          <Button className="outline-none rounded-lg w-full min-h-[41px] small-medium btn-secondary px-4 py-3 shadow-none">
+          <Button className="outline-none my-2 rounded-lg w-full min-h-[41px] small-medium btn-secondary px-4 py-3 shadow-none">
             <Image
               src="/assets/icons/account.svg"
               height={24}
@@ -78,7 +78,7 @@ const LeftSideBar = () => {
 
       <SignedIn>
         <Link href="/">
-          <Button className="light-border-2 invert-colors btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none flex-start gap-4">
+          <Button className="light-border-2 invert-colors  btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none flex-start gap-4">
             <Image
               src="/assets/icons/arrow-left.svg"
               height={24}
