@@ -11,40 +11,42 @@ import React from "react";
 const LeftSideBar = () => {
   const pathName = usePathname();
   return (
-    <section className="left-side-bar max-sm:hidden background-light900_dark200 pt-36 p-6 flex flex-col gap-[14px]">
-      {sidebarLinks.map((link) => {
-        const isActive =
-          (pathName.includes(link?.route) && link?.route.length > 1) ||
-          pathName === link?.route;
+    <section className="left-side-bar max-sm:hidden background-light900_dark200 pt-36 p-6 flex flex-col h-screen justify-between custom-scrollbar  shadow-light-300 dark:shadow-none fixed left-0 top-0 ">
+      <div className="flex flex-col flex-1 gap-[14px]">
+        {sidebarLinks.map((link) => {
+          const isActive =
+            (pathName.includes(link?.route) && link?.route.length > 1) ||
+            pathName === link?.route;
 
-        return (
-          <Link
-            href={link?.route}
-            key={link?.route}
-            className={`${
-              isActive
-                ? "primary-gradient text-light-900"
-                : "text-dark300_light900"
-            } flex-start gap-4 p-4 rounded-lg bg-none`}
-          >
-            <Image
-              src={link?.imgURL}
-              width={18}
-              height={18}
-              alt={link?.label}
-              className={isActive ? "" : "invert-colors"}
-            />
-
-            <p
+          return (
+            <Link
+              href={link?.route}
+              key={link?.route}
               className={`${
-                isActive ? "base-bold" : "base-medium"
-              } max-lg:hidden`}
+                isActive
+                  ? "primary-gradient text-light-900"
+                  : "text-dark300_light900"
+              } flex-start gap-4 p-4 rounded-lg bg-none`}
             >
-              {link?.label}
-            </p>
-          </Link>
-        );
-      })}
+              <Image
+                src={link?.imgURL}
+                width={18}
+                height={18}
+                alt={link?.label}
+                className={isActive ? "" : "invert-colors"}
+              />
+
+              <p
+                className={`${
+                  isActive ? "base-bold" : "base-medium"
+                } max-lg:hidden`}
+              >
+                {link?.label}
+              </p>
+            </Link>
+          );
+        })}
+      </div>
 
       <SignedOut>
         <Link href="/sign-in">
