@@ -11,7 +11,7 @@ import React from "react";
 const LeftSideBar = () => {
   const pathName = usePathname();
   return (
-    <section className="left-side-bar max-sm:hidden background-light900_dark200 pt-36 p-6 flex flex-col h-screen justify-between custom-scrollbar  shadow-light-300 dark:shadow-none fixed left-0 top-0 ">
+    <section className="left-side-bar max-sm:hidden background-light900_dark200 pt-36 p-6 flex flex-col h-screen justify-between custom-scrollbar  shadow-light-300 dark:shadow-none fixed left-0 top-0 lg:w-[280px]">
       <div className="flex flex-col flex-1 gap-[14px]">
         {sidebarLinks.map((link) => {
           const isActive =

@@ -1,5 +1,6 @@
 import { questionsLink } from "@/constants";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const TopQuestions = () => {
@@ -9,17 +10,21 @@ const TopQuestions = () => {
 
       <div className="questions body-medium text-dark500_light700 flex flex-col items-start gap-[30px]">
         {questionsLink.map((question) => (
-          <div className="flex-between gap-2 w-full" key={question.id}>
+          <Link
+            href={`/question/${question.id}`}
+            className="flex-between gap-2 w-full"
+            key={question.id}
+          >
             <p>{question.title}</p>
 
             <Image
-              src="/assets/icons/arrow-right.svg"
+              src="/assets/icons/chevron-right.svg"
               width={20}
               height={20}
               alt="right-arrow"
               className="invert-colors"
             />
-          </div>
+          </Link>
         ))}
       </div>
     </div>
