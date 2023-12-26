@@ -1,37 +1,52 @@
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import React from "react";
-import { ComboBoxFilter } from "../ComboBoxFilter";
-import { Filter } from "lucide-react";
 interface LoacalSearchBarProps {
   placeholderValue: string;
-  showFiter?: boolean;
+  imageSource: string;
+  route: string;
+  iconPosition: string;
+  otherClasses: string;
 }
 
 const LocalSearchBar = ({
   placeholderValue,
-  showFiter,
+  imageSource,
+  otherClasses,
+  route,
+  iconPosition,
 }: LoacalSearchBarProps) => {
   return (
-    <div className="relative w-full flex items-center gap-[30px]">
-      <div className="relative border border-red-500 background-light800_darkgradient flex min-h-[56px] rounded-[10px]  grow gap-1 items-center px-4">
+    <div
+      className={`background-light800_darkgradient light-border-2 rounded-[10px] px-4   flex  gap-4 items-center min-h-[56px] ${otherClasses}`}
+    >
+      {iconPosition === "left" && (
         <Image
-          src="/assets/icons/search.svg"
-          width="24"
-          height="24"
-          alt="search"
-          className="cursor-pointer"
+          src={imageSource}
+          width={24}
+          height={24}
+          alt="search-icon"
+          className="cursor-pointer "
         />
+      )}
 
-        <Input
-          type="text"
-          placeholder={placeholderValue}
-          value=""
-          onClick={() => {}}
-          className="no-focus placeholder paragraph-regular background-light800_darkgradient border-none shadow-none "
+      <Input
+        type="text"
+        placeholder={placeholderValue}
+        value=""
+        onClick={() => {}}
+        className="no-focus placeholder paragraph-regular background-light800_darkgradient border-none shadow-none "
+      />
+
+      {iconPosition === "right" && (
+        <Image
+          src={imageSource}
+          width={24}
+          height={24}
+          alt="search-icon"
+          className="cursor-pointer "
         />
-      </div>
-      {showFiter && <ComboBoxFilter />}
+      )}
     </div>
   );
 };

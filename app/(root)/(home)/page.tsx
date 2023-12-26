@@ -19,7 +19,13 @@ export default function Home() {
       </div>
 
       <div className="mt-8">
-        <LocalSearchBar placeholderValue={"Search questions"} showFiter />
+        <LocalSearchBar
+          placeholderValue={"Search questions"}
+          imageSource="/assets/icons/search.svg"
+          iconPosition="left"
+          route="/"
+          otherClasses="flex-1"
+        />
       </div>
     </>
   );
