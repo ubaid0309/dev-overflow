@@ -1,8 +1,20 @@
 "use client";
+import HomeFilters from "@/components/home/HomeFilters";
+import Filter from "@/components/shared/Filter";
 import LocalSearchBar from "@/components/shared/Search/LocalSearchBar";
 import { Button } from "@/components/ui/button";
+import { HomePageFilters } from "@/constants/filters";
 import { useTheme } from "@/context/ThemeProvider";
 import { UserButton } from "@clerk/nextjs";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectGroup,
+  SelectLabel,
+  SelectItem,
+} from "@radix-ui/react-select";
 import Link from "next/link";
 
 export default function Home() {
@@ -26,7 +38,15 @@ export default function Home() {
           route="/"
           otherClasses="flex-1"
         />
+
+        <Filter
+          filters={HomePageFilters}
+          otherClasses="min-h-[56px]"
+          containerClasses="max-md:flex hidden"
+        />
       </div>
+
+      <HomeFilters />
     </>
   );
 }

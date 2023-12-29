@@ -78,12 +78,13 @@ const LeftSideBar = () => {
 
       <SignedIn>
         <Link href="/">
-          <Button className="light-border-2 invert-colors  btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none flex-start gap-4">
+          <Button className="light-border-2   btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none flex-start gap-4">
             <Image
               src="/assets/icons/arrow-left.svg"
               height={24}
               width={24}
               alt="logout"
+              className="invert-colors"
             />
             <p className="max-lg:hidden">Logout</p>
           </Button>
