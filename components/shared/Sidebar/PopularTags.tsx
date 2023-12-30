@@ -15,6 +15,7 @@ const PopularTags = () => {
             questionsCount={tag.tagCount}
             id={tag?.id}
             showCount
+            otherClasses="justify-between w-full"
           />
         ))}
       </div>

@@ -4,15 +4,22 @@ import React from "react";
 
 interface TagBadgeProps {
   title: string;
-  questionsCount: number;
+  questionsCount?: number;
   id: number;
   showCount?: boolean;
+  otherClasses?: string;
 }
-const TagBadge = ({ title, questionsCount, id, showCount }: TagBadgeProps) => {
+const TagBadge = ({
+  title,
+  questionsCount,
+  id,
+  showCount,
+  otherClasses,
+}: TagBadgeProps) => {
   return (
     <Link
       href={`/tags/${id}`}
-      className="flex justify-between gap-2 w-full items-center"
+      className={`${otherClasses} flex gap-2 items-center`}
     >
       <Badge
         className="subtle-medium background-light800_dark300
