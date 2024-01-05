@@ -2,6 +2,7 @@ import React from "react";
 import TagBadge from "./Sidebar/TagBadge";
 import Image from "next/image";
 import Metric from "./Metric";
+import { getNumberInExtension, getTime } from "@/lib/utils";
 
 interface QuestionCardProps {
   question: {
@@ -30,7 +31,7 @@ const QuestionCard = ({ question }: QuestionCardProps) => {
         <Metric
           imgURL={"/assets/icons/avatar.svg"}
           alt={"avatar"}
-          title={"-asked 2023-12-04"}
+          title={`- asked ${getTime(question?.createdAt)}`}
           value={question?.author?.name}
           href={`/profile/${question?.author?.id}`}
           isAuthor
@@ -39,19 +40,19 @@ const QuestionCard = ({ question }: QuestionCardProps) => {
           imgURL="/assets/icons/like.svg"
           alt={"avatar"}
           title={"Votes"}
-          value={question?.votes}
+          value={`${getNumberInExtension(question?.votes)}`}
         />
         <Metric
           imgURL="/assets/icons/message.svg"
           alt={"upvotes"}
           title={"Answers"}
-          value={question?.answers}
+          value={`${getNumberInExtension(question?.answers)}`}
         />
         <Metric
           imgURL="/assets/icons/eye.svg"
           alt={"views"}
           title={"Views"}
-          value={question?.answers}
+          value={`${getNumberInExtension(question?.views)}`}
         />
       </div>
     </div>

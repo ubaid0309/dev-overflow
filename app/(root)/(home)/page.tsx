@@ -65,7 +65,7 @@ export default function Home() {
       votes: 44,
       answers: 14,
       views: 800,
-      createdAt: new Date("2023-12-04"),
+      createdAt: new Date("2024-1-02"),
     },
   ];
   return (
