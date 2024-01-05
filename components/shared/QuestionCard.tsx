@@ -1,17 +1,18 @@
 import React from "react";
 import TagBadge from "./Sidebar/TagBadge";
 import Image from "next/image";
+import Metric from "./Metric";
 
 interface QuestionCardProps {
   question: {
     _id: number;
     title: string;
     tags: { id: number; title: string }[];
-    author: string;
+    author: { id: number; name: string };
     votes: number;
     answers: number;
     views: number;
-    createdAt: string;
+    createdAt: Date;
   };
 }
 const QuestionCard = ({ question }: QuestionCardProps) => {
@@ -25,50 +26,33 @@ const QuestionCard = ({ question }: QuestionCardProps) => {
           ))}
         </div>
       </div>
-      <div className="flex justify-between items-center small-regular">
-        <div className="flex items-center gap-[5px]">
-          <Image
-            src="/assets/icons/avatar.svg"
-            width={20}
-            height={20}
-            alt="avatar"
-            className="invert-colors"
-          />
-
-          <p className="body-medium ">{question?.author}</p>
-
-          <p>asked {question?.createdAt}</p>
-        </div>
-
-        <div className="flex gap-[9px]">
-          <div className="flex items-center gap-[2px]">
-            <Image
-              src="/assets/icons/like.svg"
-              width={16}
-              height={16}
-              alt="likes"
-            />
-            <p>{question?.votes} Votes</p>
-          </div>
-          <div className="flex items-center gap-[2px]">
-            <Image
-              src="/assets/icons/message.svg"
-              width={16}
-              height={16}
-              alt="comment"
-            />
-            <p>{question?.answers} Answers</p>
-          </div>
-          <div className="flex items-center gap-[2px]">
-            <Image
-              src="/assets/icons/eye.svg"
-              width={16}
-              height={16}
-              alt="eye"
-            />
-            <p>{question?.views} Views</p>
-          </div>
-        </div>
+      <div className="flex justify-between items-center small-regular flex-wrap">
+        <Metric
+          imgURL={"/assets/icons/avatar.svg"}
+          alt={"avatar"}
+          title={"-asked 2023-12-04"}
+          value={question?.author?.name}
+          href={`/profile/${question?.author?.id}`}
+          isAuthor
+        />
+        <Metric
+          imgURL="/assets/icons/like.svg"
+          alt={"avatar"}
+          title={"Votes"}
+          value={question?.votes}
+        />
+        <Metric
+          imgURL="/assets/icons/message.svg"
+          alt={"upvotes"}
+          title={"Answers"}
+          value={question?.answers}
+        />
+        <Metric
+          imgURL="/assets/icons/eye.svg"
+          alt={"views"}
+          title={"Views"}
+          value={question?.answers}
+        />
       </div>
     </div>
   );

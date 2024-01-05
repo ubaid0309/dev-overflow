@@ -1,21 +1,11 @@
 "use client";
 import HomeFilters from "@/components/home/HomeFilters";
 import Filter from "@/components/shared/Filter";
+import NoResult from "@/components/shared/NoResult";
 import QuestionCard from "@/components/shared/QuestionCard";
 import LocalSearchBar from "@/components/shared/Search/LocalSearchBar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
-import { useTheme } from "@/context/ThemeProvider";
-import { UserButton } from "@clerk/nextjs";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectGroup,
-  SelectLabel,
-  SelectItem,
-} from "@radix-ui/react-select";
 import Link from "next/link";
 
 export default function Home() {
@@ -30,11 +20,11 @@ export default function Home() {
         { id: 103, title: "redux" },
         { id: 104, title: "css" },
       ],
-      author: "Sujata",
+      author: { id: 201, name: "Sujata" },
       votes: 67,
       answers: 55,
       views: 1000,
-      createdAt: "2023-12-04",
+      createdAt: new Date("2023-12-04"),
     },
     {
       _id: 2,
@@ -44,11 +34,11 @@ export default function Home() {
         { id: 101, title: "javascript" },
         { id: 102, title: "react.js" },
       ],
-      author: "Sujata",
+      author: { id: 202, name: "John" },
       votes: 67,
       answers: 55,
       views: 1000,
-      createdAt: "2023-12-04",
+      createdAt: new Date("2023-12-04"),
     },
     {
       _id: 3,
@@ -58,11 +48,11 @@ export default function Home() {
         { id: 105, title: "next.js" },
         { id: 103, title: "javascript" },
       ],
-      author: "Sujata",
+      author: { id: 203, name: "Peope" },
       votes: 74,
       answers: 247,
       views: 4111,
-      createdAt: "2023-12-12",
+      createdAt: new Date("2023-12-04"),
     },
     {
       _id: 4,
@@ -71,11 +61,11 @@ export default function Home() {
         { id: 101, title: "javascript" },
         { id: 106, title: "es6" },
       ],
-      author: "Sujata",
+      author: { id: 204, name: "Kisad" },
       votes: 44,
       answers: 14,
       views: 800,
-      createdAt: "2023-10-23",
+      createdAt: new Date("2023-12-04"),
     },
   ];
   return (
@@ -109,9 +99,18 @@ export default function Home() {
       <HomeFilters />
 
       <div className="mt-[40px] flex flex-col w-full gap-6">
-        {questions.map((question) => (
-          <QuestionCard key={question?._id} question={question} />
-        ))}
+        {questions.length > 0 ? (
+          questions.map((question) => (
+            <QuestionCard key={question?._id} question={question} />
+          ))
+        ) : (
+          <NoResult
+            title="There’s no question to show"
+            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡"
+            linkTo="/ask-question"
+            linkTitle="Ask a Question"
+          />
+        )}
       </div>
     </>
   );
