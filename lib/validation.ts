@@ -5,9 +5,10 @@ export const QuestionsSchema = z.object({
     .string()
     .min(5, { message: "Title must contains atleast 5 characters" })
     .max(150),
-  explanation: z
+  explaination: z
     .string()
-    .min(30, { message: "Explanation must contain atleast 30 characters" }),
+    .min(30, { message: "Explanation must contain atleast 30 characters" })
+    .max(150),
   tags: z
     .array(
       z
