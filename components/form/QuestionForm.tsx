@@ -18,6 +18,7 @@ import { QuestionsSchema } from "@/lib/validation";
 import { Editor } from "@tinymce/tinymce-react";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
+import { createQuestion } from "@/lib/serveractions/question.action";
 
 const QuestionForm = () => {
   const editorRef = useRef(null);
@@ -35,11 +36,14 @@ const QuestionForm = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof QuestionsSchema>) {
+  async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmitting(true);
 
     try {
+      // create a Question
+      await createQuestion({});
     } catch (err) {
+      // catch error
     } finally {
       setIsSubmitting(false);
     }
@@ -123,6 +127,8 @@ const QuestionForm = () => {
                     //@ts-ignore
                     editorRef.current = editor;
                   }}
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) => field.onChange(content)}
                   initialValue=""
                   init={{
                     height: 500,
