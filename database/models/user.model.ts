@@ -25,7 +25,7 @@ const UserSchema = new Schema<IUserModel>({
   porfolioLink: { type: String },
   password: { type: String, required: true },
   location: { type: String, required: true },
-  reputation: { type: Number, required: true },
+  reputation: { type: Number, required: true, default: 0 },
   profilePictureUrl: { type: String },
   joinedAt: { type: Date, required: true, default: Date.now },
   savedPosts: [{ type: Schema.Types.ObjectId, ref: "Question" }],
