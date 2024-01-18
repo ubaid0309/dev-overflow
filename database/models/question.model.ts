@@ -9,7 +9,7 @@ export interface IQuestionModel extends Document {
   answers: mongoose.Schema.Types.ObjectId[];
   tags: mongoose.Schema.Types.ObjectId[];
   createdAt: Date;
-  author: mongoose.Schema.Types.ObjectId;
+  author: Schema.Types.ObjectId;
 }
 
 const QuestionSchema = new Schema<IQuestionModel>({

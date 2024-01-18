@@ -20,7 +20,10 @@ import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion } from "@/lib/serveractions/question.action";
 
-const QuestionForm = () => {
+interface IQuestionForm {
+  mongoUserId: string;
+}
+const QuestionForm = ({ mongoUserId }: IQuestionForm) => {
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const submitType: string = "create";
@@ -41,7 +44,12 @@ const QuestionForm = () => {
 
     try {
       // create a Question
-      await createQuestion({});
+      await createQuestion({
+        title: values.title,
+        tags: values.tags,
+        explaination: values.explaination,
+        author: JSON.parse(mongoUserId),
+      });
     } catch (err) {
       // catch error
     } finally {
