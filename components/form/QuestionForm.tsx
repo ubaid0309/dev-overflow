@@ -19,7 +19,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQuestion } from "@/lib/serveractions/question.action";
-
+import { useRouter, usePathname } from "next/navigation";
 interface IQuestionForm {
   mongoUserId: string;
 }
@@ -27,6 +27,7 @@ const QuestionForm = ({ mongoUserId }: IQuestionForm) => {
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const submitType: string = "create";
+  const router = useRouter();
   // 1. Define your form.
 
   const form = useForm<z.infer<typeof QuestionsSchema>>({
@@ -50,6 +51,9 @@ const QuestionForm = ({ mongoUserId }: IQuestionForm) => {
         explaination: values.explaination,
         author: JSON.parse(mongoUserId),
       });
+
+      //navigate to homepage
+      router.push("/");
     } catch (err) {
       // catch error
     } finally {

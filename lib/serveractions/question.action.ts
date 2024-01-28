@@ -2,8 +2,26 @@
 
 import QuestionModel from "@/database/models/question.model";
 import { connectToDatabase } from "../mongoose";
+import { model } from "mongoose";
 import TagModel from "@/database/models/tag.model";
+import UserModel from "@/database/models/user.model";
+import { GetQuestionsParams } from "./shared.types";
 
+export async function getQuestions(params: GetQuestionsParams) {
+  try {
+    connectToDatabase();
+    const questions = await QuestionModel.find({})
+      .populate({
+        path: "tags",
+        model: TagModel,
+      })
+      .populate({ path: "author", model: UserModel });
+
+    return { questions };
+  } catch (err) {
+    throw err;
+  }
+}
 export async function createQuestion(params: any) {
   try {
     connectToDatabase();
