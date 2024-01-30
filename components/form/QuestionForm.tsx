@@ -28,6 +28,7 @@ const QuestionForm = ({ mongoUserId }: IQuestionForm) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const submitType: string = "create";
   const router = useRouter();
+  const pathname = usePathname();
   // 1. Define your form.
 
   const form = useForm<z.infer<typeof QuestionsSchema>>({
@@ -50,6 +51,7 @@ const QuestionForm = ({ mongoUserId }: IQuestionForm) => {
         tags: values.tags,
         explaination: values.explaination,
         author: JSON.parse(mongoUserId),
+        path: pathname,
       });
 
       //navigate to homepage

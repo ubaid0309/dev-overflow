@@ -6,6 +6,8 @@ import { model } from "mongoose";
 import TagModel from "@/database/models/tag.model";
 import UserModel from "@/database/models/user.model";
 import { GetQuestionsParams } from "./shared.types";
+import { revalidatePath } from "next/cache";
+import path from "path";
 
 export async function getQuestions(params: GetQuestionsParams) {
   try {
@@ -25,7 +27,7 @@ export async function getQuestions(params: GetQuestionsParams) {
 export async function createQuestion(params: any) {
   try {
     connectToDatabase();
-    const { title, tags, author, explaination } = params;
+    const { title, tags, author, explaination, path } = params;
     const question = await QuestionModel.create({
       title,
       explaination,
@@ -47,6 +49,8 @@ export async function createQuestion(params: any) {
     await QuestionModel.findByIdAndUpdate(question._id, {
       $push: { tags: { $each: tagDocuments } },
     });
+
+    revalidatePath(path);
   } catch (err) {
     console.log(err);
   }

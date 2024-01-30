@@ -24,7 +24,7 @@ const QuestionCard = async ({ question }: any) => {
         <p className="h3-semibold ">{question?.title}</p>
         <div className="flex gap-2">
           {question?.tags.map((tag: any) => (
-            <TagBadge key={tag?._id} id={tag?._id} title={tag?.title} />
+            <TagBadge key={tag?._id} id={tag?._id} name={tag?.name} />
           ))}
         </div>
       </div>
