@@ -2,8 +2,9 @@
 
 import UserModel from "@/database/models/user.model";
 import { connectToDatabase } from "../mongoose";
+import { CreateUserParams, GetUserByIdParams } from "./shared.types";
 
-export async function getUserById(params: any) {
+export async function getUserById(params: GetUserByIdParams) {
   try {
     connectToDatabase();
     const { userId } = params;
@@ -13,6 +14,18 @@ export async function getUserById(params: any) {
     return user;
   } catch (err) {
     console.log(err);
+    throw err;
+  }
+}
+
+export async function createUser(userParams: CreateUserParams) {
+  try {
+    connectToDatabase();
+
+    const newUser = await UserModel.create(userParams);
+
+    return newUser;
+  } catch (err) {
     throw err;
   }
 }
