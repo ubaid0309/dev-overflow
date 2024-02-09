@@ -1,7 +1,7 @@
 import exp from "constants";
 import { Document, Schema, model, models } from "mongoose";
 
-interface IUserModel extends Document {
+export interface IUserModel extends Document {
   clerkId: string;
   username: string;
   name: string;
@@ -19,15 +19,15 @@ interface IUserModel extends Document {
 const UserSchema = new Schema<IUserModel>({
   clerkId: { type: String, required: true },
   username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
-  name: { type: String, required: true },
-  bio: { type: String, required: true },
+  email: { type: String, unique: true },
+  name: { type: String },
+  bio: { type: String },
   porfolioLink: { type: String },
-  password: { type: String, required: true },
-  location: { type: String, required: true },
-  reputation: { type: Number, required: true, default: 0 },
+  password: { type: String },
+  location: { type: String },
+  reputation: { type: Number, default: 0 },
   profilePictureUrl: { type: String },
-  joinedAt: { type: Date, required: true, default: Date.now },
+  joinedAt: { type: Date, default: Date.now },
   savedPosts: [{ type: Schema.Types.ObjectId, ref: "Question" }],
 });
 

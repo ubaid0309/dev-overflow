@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { IUser } from "@/mongodb";
+import { IUserModel } from "@/database/models/user.model";
 
 export interface CreateAnswerParams {
   content: string;
@@ -129,7 +129,7 @@ export interface GetAllUsersParams {
 
 export interface UpdateUserParams {
   clerkId: string;
-  updateData: Partial<IUser>;
+  updateData: Partial<IUserModel>;
   path: string;
 }
 
