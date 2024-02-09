@@ -41,7 +41,7 @@ const QuestionCard = async ({ question }: any) => {
           imgURL="/assets/icons/like.svg"
           alt={"avatar"}
           title={"Votes"}
-          value={`${getNumberInExtension(question?.votes)}`}
+          value={`${getNumberInExtension(question?.upvotes)}`}
         />
         <Metric
           imgURL="/assets/icons/message.svg"
